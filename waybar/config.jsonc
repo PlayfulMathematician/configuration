@@ -1,0 +1,103 @@
+{
+  "layer": "top",
+  "position": "top",
+  "autohide": true,
+  "autohide-blocked": false,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "modules-left": [
+    "custom/archicon",
+
+    "clock",
+    "cpu",
+    "memory",
+    "disk",
+    "temperature",
+    "battery",
+  ],
+  "modules-center": [
+  ],
+  "modules-right": [
+    "idle_inhibitor",
+    "pulseaudio/slider",
+    "pulseaudio",
+    "network"
+  ],
+  "custom/archicon": {
+    "format": "󰣇",
+    "tooltip": true,
+    "tooltip-format": "I use arch btw"
+  },
+  "clock": {
+    "timezone": "Asia/Manila",
+    "format": "{:%I:%M  %d/%m/%y}",
+    "tooltip-format": "{calendar}",
+    "calendar": {
+      "mode": "month"
+    }
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": true
+  },
+  "memory": {
+    "format": "{}% 󰍛",
+    "tooltip": true,
+    "tooltip-format": "RAM in use: {used} / {total} ({percentage}%)"
+  },
+  "disk": {
+    "format": "{percentage_free}% ",
+    "tooltip": true,
+    "tooltip-format": "Disk free: {free} / {total} ({percentage_free}%)"
+  },
+  "temperature": {
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [
+      ""
+    ]
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "all-outputs": true,
+    "active-first": true,
+    "tooltip-format": "{name}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+      "rofi"
+    ]
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "pulseaudio/slider": {
+    "format": "{volume}%",
+    "format-muted": " MUTE",
+    "step": 1,
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": " {format_source}",
+    "format-icons": {
+      "default": [
+        "",
+        ""
+      ]
+    }
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-ethernet": "{ifname} Ethernet",
+    "format-disconnected": "Disconnectted",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-ethernet": "{ifname} {ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  }
+}
