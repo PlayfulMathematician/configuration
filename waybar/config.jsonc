@@ -14,7 +14,7 @@
     "memory",
     "disk",
     "temperature",
-    "battery",
+    "battery"
   ],
   "modules-center": [
   ],
@@ -77,24 +77,24 @@
   },
   "pulseaudio/slider": {
     "format": "{volume}%",
-    "format-muted": " MUTE",
+    "format-muted": "MUTE",
     "step": 1,
     "tooltip": false
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",
-    "format-muted": " {format_source}",
+    "format-muted": "{format_source}",
     "format-icons": {
       "default": [
-        "",
-        ""
+        "",
+        ""
       ]
     }
   },
   "network": {
     "format": "{ifname}",
     "format-ethernet": "{ifname} Ethernet",
-    "format-disconnected": "Disconnectted",
+    "format-disconnected": "Disconnected",
     "tooltip-format": "{ifname} via {gwaddr}",
     "tooltip-format-ethernet": "{ifname} {ipaddr}/{cidr}",
     "tooltip-format-disconnected": "Disconnected",
