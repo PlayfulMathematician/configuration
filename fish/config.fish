@@ -19,9 +19,9 @@ function secrets-status
 end
 
 function neovim 
-  nvim 
+  nvim $argv
 end
 
 function nv 
-  nvim 
+  nvim $argv
 end
