@@ -25,3 +25,5 @@ end
 function nv 
   nvim $argv
 end
+
+starship init fish | source

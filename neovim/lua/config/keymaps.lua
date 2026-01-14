@@ -12,45 +12,45 @@ map("n", "<leader>bp", ":bprevious<CR>", opts)
 map("n", "<leader>bd", ":bdelete<CR>", opts)
 
 map("n", "<leader>f", function()
-	require("conform").format({ async = true })
+  require("conform").format({ async = true })
 end, opts)
 
 function M.lsp_on_attach(bufnr)
-	local b = { buffer = bufnr, silent = true }
+  local b = { buffer = bufnr, silent = true }
 
-	map("n", "gd", vim.lsp.buf.definition, b)
-	map("n", "gr", vim.lsp.buf.references, b)
-	map("n", "K", vim.lsp.buf.hover, b)
-	map("n", "gi", vim.lsp.buf.implementation, b)
+  map("n", "gd", vim.lsp.buf.definition, b)
+  map("n", "gr", vim.lsp.buf.references, b)
+  map("n", "K", vim.lsp.buf.hover, b)
+  map("n", "gi", vim.lsp.buf.implementation, b)
 
-	map("n", "<leader>rn", vim.lsp.buf.rename, b)
-	map("n", "<leader>ca", vim.lsp.buf.code_action, b)
+  map("n", "<leader>rn", vim.lsp.buf.rename, b)
+  map("n", "<leader>ca", vim.lsp.buf.code_action, b)
 
-	map("n", "[d", vim.diagnostic.goto_prev, b)
-	map("n", "]d", vim.diagnostic.goto_next, b)
+  map("n", "[d", vim.diagnostic.goto_prev, b)
+  map("n", "]d", vim.diagnostic.goto_next, b)
 end
 
 vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>", { silent = true })
 vim.keymap.set("n", "]h", function()
-	require("gitsigns").next_hunk()
+  require("gitsigns").next_hunk()
 end, { silent = true })
 
 vim.keymap.set("n", "[h", function()
-	require("gitsigns").prev_hunk()
+  require("gitsigns").prev_hunk()
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>hs", function()
-	require("gitsigns").stage_hunk()
+  require("gitsigns").stage_hunk()
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>hr", function()
-	require("gitsigns").reset_hunk()
+  require("gitsigns").reset_hunk()
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>hb", function()
-	require("gitsigns").blame_line()
+  require("gitsigns").blame_line()
 end, { silent = true })
 
 vim.keymap.set("n", "q", "<nop>")
-
+vim.keymap.set({ "n", "v" }, "d", '"_d', { noremap = true })
 return M
