@@ -31,7 +31,7 @@
   },
   "clock": {
     "timezone": "Asia/Manila",
-    "format": "{:%I:%M  %d/%m/%y}",
+    "format": "{:%I:%M  %d-%m-%y}",
     "tooltip-format": "{calendar}",
     "calendar": {
       "mode": "month"
