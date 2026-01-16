@@ -12,6 +12,8 @@ M.on_attach = function(_, bufnr)
   keymaps.lsp_on_attach(bufnr)
 end
 
+
+
 M.settings = {
   lua_ls = {
     Lua = {
@@ -19,7 +21,20 @@ M.settings = {
       workspace = { checkThirdParty = false },
     },
   },
+
+  ts_ls = {
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayVariableTypeHints = true,
+      },
+    },
+    typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayVariableTypeHints = true,
+      },
+    },
+  },
 }
-
 return M
-

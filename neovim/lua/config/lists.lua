@@ -26,11 +26,11 @@ M.treesitter_parsers = {
   "python",
   "javascript",
   "typescript",
+  "tsx",
   "json",
   "bash",
   "markdown",
+  "markdown_inline",
   "vim",
-  "markdown_inline"
 }
-
 return M
