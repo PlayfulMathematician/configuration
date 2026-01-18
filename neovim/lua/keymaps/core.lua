@@ -11,3 +11,6 @@ map("n", "<leader>bd", ":bdelete<CR>", opts)
 -- i don't know how to use macros
 map("n", "q", "<nop>")
 map({ "n", "v" }, "d", '"_d', { noremap = true })
+map("n", "<leader>x", ":bdelete<CR>", { silent = true, desc = "Close tab" })
+map("n", "<S-h>", ":bprevious<CR>", opts)
+map("n", "<S-l>", ":bnext<CR>", opts)

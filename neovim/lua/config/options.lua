@@ -19,23 +19,23 @@ vim.opt.splitbelow = true
 
 -- SSH clipboard support
 if vim.env.SSH_TTY ~= nil then
-  vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = function(lines)
-        require("vim.ui.clipboard.osc52").copy("+")(lines)
-      end,
-      ["*"] = function(lines)
-        require("vim.ui.clipboard.osc52").copy("*")(lines)
-      end,
-    },
-    paste = {
-      ["+"] = function()
-        return require("vim.ui.clipboard.osc52").paste("+")()
-      end,
-      ["*"] = function()
-        return require("vim.ui.clipboard.osc52").paste("*")()
-      end,
-    },
-  }
+	vim.g.clipboard = {
+		name = "OSC 52",
+		copy = {
+			["+"] = function(lines)
+				require("vim.ui.clipboard.osc52").copy("+")(lines)
+			end,
+			["*"] = function(lines)
+				require("vim.ui.clipboard.osc52").copy("*")(lines)
+			end,
+		},
+		paste = {
+			["+"] = function()
+				return require("vim.ui.clipboard.osc52").paste("+")()
+			end,
+			["*"] = function()
+				return require("vim.ui.clipboard.osc52").paste("*")()
+			end,
+		},
+	}
 end

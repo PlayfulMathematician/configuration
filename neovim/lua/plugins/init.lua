@@ -1,5 +1,5 @@
 return {
-  { import = "plugins.aesthetics" },
-  { import = "plugins.git" },
-  { import = "plugins.coding" },
-};
+	{ import = "plugins.aesthetics" },
+	{ import = "plugins.git" },
+	{ import = "plugins.coding" },
+}
