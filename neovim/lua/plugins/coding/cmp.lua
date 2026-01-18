@@ -14,16 +14,11 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
 
-      -- todo: add mdx
-      local types = require("cmp.types")
-
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
         completion = {
-          autocomplete = {
-            types.cmp.TriggerEvent.TextChanged,
-          },
+          completeopt = "menu,menuone,noinsert",
         },
 
         snippet = {
@@ -62,24 +57,6 @@ return {
           { name = "luasnip" },
           { name = "path" },
           { name = "buffer" },
-        },
-      })
-
-      cmp.setup.filetype("markdown", {
-        sources = {
-          { name = "luasnip" },
-          { name = "buffer",  keyword_length = 1 },
-          { name = "path" },
-          { name = "nvim_lsp" },
-        },
-
-      })
-      cmp.setup.filetype("mdx", {
-        sources = {
-          { name = "luasnip" },
-          { name = "buffer",  keyword_length = 1 },
-          { name = "path" },
-          { name = "nvim_lsp" },
         },
       })
     end,

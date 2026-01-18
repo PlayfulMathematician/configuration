@@ -1,9 +1,10 @@
-local opts = require("config.autopairs")
-
 return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    opts = opts,
+    opts = {
+      check_ts = true,
+      fast_wrap = {},
+    },
   },
 }
