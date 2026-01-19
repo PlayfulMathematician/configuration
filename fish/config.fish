@@ -1,12 +1,11 @@
+fish_add_path --prepend /usr/bin /bin
+fish_add_path --prepend /usr/bin/vendor_perl
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/share/gem/ruby/3.4.0/bin
-
+set -e PERL5LIB PERL_MB_OPT PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 set -Ux VCPKG_ROOT $HOME/.local/share/vcpkg
 
-if test -x /home/linuxbrew/.linuxbrew/bin/brew
-    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-end
 
 if test -f "$HOME/.elan/env"
     source "$HOME/.elan/env"
@@ -35,4 +34,5 @@ function nv
 end
 
 starship init fish | source
+
 
