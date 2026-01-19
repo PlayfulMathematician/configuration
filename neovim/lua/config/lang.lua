@@ -75,6 +75,8 @@ M.lang = {
 	bash = { ts = { "bash" } },
 	vim = { ts = { "vim" } },
 	org = { ts = { "org" } },
+	latex = { ts = { "latex" }, lsp = "texlab" },
+	bibtex = { ts = { "bibtex" } },
 }
 
 -- helpers -------------------------------------------------

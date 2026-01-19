@@ -7,10 +7,12 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<leader>bn", ":bnext<CR>", opts)
 map("n", "<leader>bp", ":bprevious<CR>", opts)
+-- doesn't work
 map("n", "<leader>bd", ":bdelete<CR>", opts)
 -- i don't know how to use macros
 map("n", "q", "<nop>")
 map({ "n", "v" }, "d", '"_d', { noremap = true })
+-- doesn't work
 map("n", "<leader>x", ":bdelete<CR>", { silent = true, desc = "Close tab" })
 map("n", "<S-h>", ":bprevious<CR>", opts)
 map("n", "<S-l>", ":bnext<CR>", opts)
