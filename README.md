@@ -1,4 +1,4 @@
-# Configuration 
+# Configuration
 
 This is my configuration.
 
@@ -17,4 +17,3 @@ This is my waybar configuration. It is a modified version of https://github.com/
 ## fish
 
 This is my fish configuration.
-

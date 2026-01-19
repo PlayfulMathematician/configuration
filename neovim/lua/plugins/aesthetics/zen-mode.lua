@@ -25,7 +25,6 @@ return {
 		},
 		config = function(_, opts)
 			require("zen-mode").setup(opts)
-			require("keymaps.zen").setup()
 		end,
 	},
 }

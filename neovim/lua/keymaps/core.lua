@@ -13,6 +13,15 @@ map("n", "<leader>bd", ":bdelete<CR>", opts)
 map("n", "q", "<nop>")
 map({ "n", "v" }, "d", '"_d', { noremap = true })
 -- doesn't work
+
 map("n", "<leader>x", ":bdelete<CR>", { silent = true, desc = "Close tab" })
 map("n", "<S-h>", ":bprevious<CR>", opts)
 map("n", "<S-l>", ":bnext<CR>", opts)
+
+map("n", "j", function()
+	return vim.wo.wrap and "gj" or "j"
+end, { expr = true, silent = true })
+
+map("n", "k", function()
+	return vim.wo.wrap and "gk" or "k"
+end, { expr = true, silent = true })
