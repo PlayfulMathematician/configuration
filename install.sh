@@ -16,18 +16,24 @@ else
 fi
 
 move_if_exists() {
-  [ -e "$1" ] || [ -L "$1" ] && mv "$1" "$BACKUP/"
+  local dest="$1"
+  if [ -e "$dest" ] || [ -L "$dest" ]; then
+    mv "$dest" "$BACKUP/"
+  fi
 }
 
 link() {
-  move_if_exists "$2"
-  ln -s "$1" "$2"
+  local src="$1"
+  local dest="$2"
+  move_if_exists "$dest"
+  ln -s "$src" "$dest"
 }
 
-link "$REPO/fish"      "$CONFIG/fish"
-link "$REPO/hyprland"  "$CONFIG/hypr"
-link "$REPO/kitty"     "$CONFIG/kitty"
-link "$REPO/neovim"    "$CONFIG/nvim"
-link "$REPO/waybar"    "$CONFIG/waybar"
-link "$REPO/starship.toml" "$CONFIG/starship.toml"
+link "$REPO/fish"           "$CONFIG/fish"
+link "$REPO/hyprland"       "$CONFIG/hypr"
+link "$REPO/kitty"          "$CONFIG/kitty"
+link "$REPO/neovim"         "$CONFIG/nvim"
+link "$REPO/waybar"         "$CONFIG/waybar"
+link "$REPO/starship.toml"  "$CONFIG/starship.toml"
+link "$REPO/emacs"          "$HOME/.emacs.d"
 
