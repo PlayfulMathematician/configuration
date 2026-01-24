@@ -67,7 +67,6 @@
   (lambda () (interactive)
     (find-file "~/stuff_bin/documents/org/writing-private.org")))
 
-(global-visual-line-mode 1)
 
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq word-wrap t)
@@ -84,3 +83,12 @@
                        (count-words (point-min) (point-max))))))
 
 (setq auto-save-default nil)
+(setq make-backup-files nil)
+
+(require 'ox-md)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(global-display-line-numbers-mode 1)
+(global-visual-line-mode t)
+(setq display-line-numbers-type 'relative)

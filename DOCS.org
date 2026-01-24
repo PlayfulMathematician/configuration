@@ -1,0 +1,90 @@
+* Configuration
+** Introduction
+This is my configuration for linux. You can install it with install.sh. It uses the Catppuccin Mocha colorscheme.
+** kitty
+Within my kitty configuration there are two files.
+**** current-theme.conf
+This is the current theme which is Catppuccin Mocha. I didn't make this theme
+**** kitty.conf
+I currently use the JetBrains Mono Nerd Font. Ligatures are enabled and the font size is 12. I have OSC52 enabled.
+** emacs
+Emacs is my main platform for writing long form. I use the elpaca package manager. Additionally I use the Catppucin Mocha theme.
+*** Packages
+**** catppuccin-theme
+I use catppuccin-theme to allow for for my themes.
+**** org-modern
+This is for aesthetic reasons, I like the way it looks.
+**** evil
+I use neovim so this allows me to use vim keybinds.
+*** Aesthetic Changes
+- I turned off the tool bar and scroll bar and menu bar.
+- I added word count to the modeline.
+- I have added wrapping.
+- Line numbers are relative
+*** Keybinds
+**** C-c j
+This allows me to modify my personal journal.
+**** C-c a
+This allows me to modify my writing file.
+**** C-c b
+This is for my private writing file. 
+** hyprland
+This is my hyprwm config
+*** hyprland
+This is my hyprland config. Workspaces 1 through 9 are my main monitor. Workspaces 10 through 18 are external monitors. 
+**** Keybinds
+***** Workspaces
+****** Super N
+This goes to workspace N
+****** Super Control N
+This goes to workspace N + 9
+****** Super Shift N
+This moves the active window to workspace N
+****** Super Control Shift N
+This moves to the active window to workspace N + 9
+***** Super UP
+This increases the volume
+***** Super DOWN
+This decreases the volume
+***** Super Alt Up
+This increases the brightness of the screen
+***** Super Alt Down
+This decreases the brightness of the screen
+***** Super M
+This mutes the microphone
+***** Super Shift S
+This uses flameshot to screenshot
+***** Super R
+This uses wlogout to log out.
+***** Super J
+This screenshots the entire screen and copies it to the clipboard
+***** Print Screen
+This does what Super+J does.
+**** Run at Start
+***** waybar
+This is runs waybar, I explain my waybar configuration later.
+***** swaync
+This is my notification daemon
+***** hyprpaper
+This is my wallpaper configuration
+*** hyprpaper
+This is my wallpaper configuration, it is very simple. I will not include an image of my background
+** fish
+Fish is the shell I use. There is only one main file.
+*** config.fish
+My path includes rust, go, ruby, and perl. Additionally, I have Lean set up. The default editor is Neovim.
+**** secrets-open
+This opens the vault containing my secrets.
+**** secrets-close
+This closes the secrets vault
+**** secrets-status
+This shows the status of the vault
+**** neovim
+This is an alias of nvim
+**** nv
+This is an alias of nv
+**** starship
+This sets up starship
+*** fish_plugins
+I only have one plugin, z.
+
