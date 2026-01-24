@@ -41,5 +41,46 @@
   (elpaca-use-package-mode))
 
 (use-package catppuccin-theme :ensure t :demand t)
+(use-package org-modern
+  :ensure t
+  :hook
+  (org-mode . org-modern-mode)
+  (org-agenda-finalize . org-modern-agenda))
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
 (elpaca-wait)
 (load-theme 'catppuccin :no-confirm)
+
+(global-set-key (kbd "C-c j")
+  (lambda () (interactive)
+    (find-file "~/stuff_bin/documents/org/journal.org")))
+(global-set-key (kbd "C-c a")
+  (lambda () (interactive)
+    (find-file "~/stuff_bin/documents/org/writing-public.org")))
+
+(global-set-key (kbd "C-c b")
+  (lambda () (interactive)
+    (find-file "~/stuff_bin/documents/org/writing-private.org")))
+
+(global-visual-line-mode 1)
+
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+(setq word-wrap t)
+
+(setq-default truncate-lines nil)
+(set-face-attribute 'default nil :height 240)
+(add-hook 'org-mode-hook #'org-indent-mode)
+(add-hook 'org-mode-hook
+          (lambda ()
+            (org-overview)                     (goto-char (point-max))))
+(setq mode-line-position
+      '((line-number-mode ("%l" (column-number-mode ":%c")))
+        (:eval (format " W:%d"
+                       (count-words (point-min) (point-max))))))
+
+(setq auto-save-default nil)
