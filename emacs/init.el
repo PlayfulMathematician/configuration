@@ -100,12 +100,14 @@
 (setq-default truncate-lines nil)
 (set-face-attribute 'default nil :height 240)
 
-;;;* hooks
+;;;* org hooks
 (add-hook 'org-mode-hook #'org-indent-mode)
 (add-hook 'org-mode-hook
           (lambda ()
             (org-overview)
-	    ))
+))
+
+;;;* hooks to hide elpaca (i hate elpaca)  
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (when (my/init-el-p)
