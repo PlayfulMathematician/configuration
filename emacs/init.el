@@ -1,3 +1,4 @@
+;;;* elpaca 
 (defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
@@ -39,7 +40,7 @@
 
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
-
+;;;* package installation
 (use-package catppuccin-theme :ensure t :demand t)
 (use-package org-modern
   :ensure t
@@ -51,44 +52,94 @@
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
+  (setq evil-undo-system 'undo-redo)
   :config
   (evil-mode 1))
 (elpaca-wait)
+
+;;;* require
+(with-eval-after-load 'org
+  (require 'org-agenda))
+(require 'org-crypt)
+(require 'ox-md)
+
+;;;* custom functions
+(defun my/open-index-org ()
+  (interactive)
+  (find-file (expand-file-name "~/stuff_bin/documents/org/index.org")))
+(defun my/open-init-el ()
+  (interactive)
+  (find-file (expand-file-name "~/.emacs.d/init.el")))
+(defun my/init-el-p ()
+  (and buffer-file-name
+       (string-equal (file-truename buffer-file-name)
+                     (file-truename (expand-file-name "init.el" user-emacs-directory)))))
+
+;;;* catppuccin theme
 (load-theme 'catppuccin :no-confirm)
 
-(global-set-key (kbd "C-c j")
-  (lambda () (interactive)
-    (find-file "~/stuff_bin/documents/org/journal.org")))
-(global-set-key (kbd "C-c a")
-  (lambda () (interactive)
-    (find-file "~/stuff_bin/documents/org/writing-public.org")))
+;;;* keybinds 
+(global-set-key (kbd "C-c j") #'my/open-index-org)
+(global-set-key (kbd "C-c g") #'my/open-init-el)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
 
-(global-set-key (kbd "C-c b")
-  (lambda () (interactive)
-    (find-file "~/stuff_bin/documents/org/writing-private.org")))
+;;;* ui stuff
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
+;;;* line numbers
+(global-display-line-numbers-mode 1)
+(global-visual-line-mode t)
+(setq display-line-numbers-type 'relative)
 
+;;;* word wrap and fonts
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq word-wrap t)
-
 (setq-default truncate-lines nil)
 (set-face-attribute 'default nil :height 240)
+
+;;;* hooks
 (add-hook 'org-mode-hook #'org-indent-mode)
 (add-hook 'org-mode-hook
           (lambda ()
-            (org-overview)                     (goto-char (point-max))))
+            (org-overview)
+	    ))
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (when (my/init-el-p)
+              (setq-local outline-regexp ";;;\\*+ ")
+              (outline-minor-mode 1))))
+
+(add-hook 'outline-minor-mode-hook
+          (lambda ()
+            (when (my/init-el-p)
+              (save-excursion
+                (goto-char (point-min))
+                (when (re-search-forward "^;;;\\*+ elpaca" nil t)
+                  (outline-hide-subtree))))))
+
+;;;* mode line
 (setq mode-line-position
       '((line-number-mode ("%l" (column-number-mode ":%c")))
         (:eval (format " W:%d"
                        (count-words (point-min) (point-max))))))
 
+;;;* backup/autosave
 (setq auto-save-default nil)
 (setq make-backup-files nil)
 
-(require 'ox-md)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(global-display-line-numbers-mode 1)
-(global-visual-line-mode t)
-(setq display-line-numbers-type 'relative)
+;;;* initial buffer
+(setq initial-buffer-choice
+      (expand-file-name "~/stuff_bin/documents/org/index.org"))
+
+;;;* org file
+(setq org-agenda-files
+      '("~/stuff_bin/documents/org/index.org"))
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CANCELLED(c)")))
+(org-crypt-use-before-save-magic)
+(setq org-crypt-key nil)
+(setq org-tags-exclude-from-inheritance '("crypt"))
+(setq epa-file-cache-passphrase-for-symmetric-encryption t)
