@@ -5,3 +5,4 @@ emacs/elpaca
 emacs/url
 emacs/bookmarks
 emacs/session*
+emacs/custom.el
