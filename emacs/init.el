@@ -95,7 +95,6 @@
 (setq display-line-numbers-type 'relative)
 
 ;;;* word wrap and fonts
-(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq word-wrap t)
 (setq-default truncate-lines nil)
 (set-face-attribute 'default nil :height 240)
@@ -127,6 +126,7 @@
       '((line-number-mode ("%l" (column-number-mode ":%c")))
         (:eval (format " W:%d"
                        (count-words (point-min) (point-max))))))
+;; (mode-line-word-count-mode 1)
 
 ;;;* backup/autosave
 (setq auto-save-default nil)
@@ -145,3 +145,16 @@
 (setq org-crypt-key nil)
 (setq org-tags-exclude-from-inheritance '("crypt"))
 (setq epa-file-cache-passphrase-for-symmetric-encryption t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-safe-remote-resources
+   '("\\`https://totallyhistory\\.com/wp-content/uploads/2013/01/Escher_Relativity\\.jpg\\'")))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

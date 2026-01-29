@@ -29,11 +29,10 @@ link() {
   ln -s "$src" "$dest"
 }
 
-link "$REPO/fish"           "$CONFIG/fish"
-link "$REPO/hyprland"       "$CONFIG/hypr"
-link "$REPO/kitty"          "$CONFIG/kitty"
-link "$REPO/neovim"         "$CONFIG/nvim"
-link "$REPO/waybar"         "$CONFIG/waybar"
-link "$REPO/starship.toml"  "$CONFIG/starship.toml"
-link "$REPO/emacs"          "$HOME/.emacs.d"
-
+link "$REPO/fish" "$CONFIG/fish"
+link "$REPO/hyprland" "$CONFIG/hypr"
+link "$REPO/kitty" "$CONFIG/kitty"
+link "$REPO/neovim" "$CONFIG/nvim"
+link "$REPO/waybar" "$CONFIG/waybar"
+link "$REPO/starship.toml" "$CONFIG/starship.toml"
+link "$REPO/emacs" "$HOME/.emacs.d"

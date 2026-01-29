@@ -77,6 +77,51 @@ M.lang = {
 	org = { ts = { "org" } },
 	latex = { ts = { "latex" }, lsp = "texlab" },
 	bibtex = { ts = { "bibtex" } },
+	rust = {
+		lsp = "rust_analyzer",
+		fmt = {
+			{ name = "rustfmt", mason = false },
+		},
+		ts = { "rust" },
+	},
+	sh = {
+		lsp = "bashls",
+		fmt = {
+			{ name = "shfmt", mason = true },
+		},
+		ts = { "bash" },
+	},
+	toml = {
+		lsp = "taplo",
+		fmt = {
+			{ name = "taplo", mason = true },
+		},
+		ts = { "toml" },
+	},
+	css = {
+		lsp = "cssls",
+		fmt = {
+			{ name = "prettier", mason = true },
+		},
+		ts = { "css" },
+	},
+	tailwindcss = {
+		lsp = "tailwindcss",
+		ts = {
+			"css",
+			"html",
+			"javascript",
+			"typescript",
+			"tsx",
+		},
+	},
+	html = {
+		lsp = "html",
+		fmt = {
+			{ name = "prettier", mason = true },
+		},
+		ts = { "html" },
+	},
 }
 
 -- helpers -------------------------------------------------
