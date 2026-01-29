@@ -145,16 +145,6 @@
 (setq org-crypt-key nil)
 (setq org-tags-exclude-from-inheritance '("crypt"))
 (setq epa-file-cache-passphrase-for-symmetric-encryption t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-safe-remote-resources
-   '("\\`https://totallyhistory\\.com/wp-content/uploads/2013/01/Escher_Relativity\\.jpg\\'")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file 'noerror)
+
