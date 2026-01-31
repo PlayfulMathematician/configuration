@@ -1,4 +1,4 @@
-* Configuration
+* My Personal Configuration
 ** Introduction
 This is my configuration for linux. You can install it with install.sh. It uses the Catppuccin Mocha colorscheme.
 ** kitty
@@ -23,11 +23,13 @@ I use neovim so this allows me to use vim keybinds.
 - Line numbers are relative
 *** Keybinds
 **** C-c j
-This allows me to modify my personal journal.
+This allows me to modify my main index.org file.
+**** C-c g
+This allows me to modify my init.el file.
+**** C-c r
+This reloads my emacs configuration to avoid reopening it.
 **** C-c a
-This allows me to modify my writing file.
-**** C-c b
-This is for my private writing file. 
+This opens up Org Agenda
 ** hyprland
 This is my hyprwm config
 *** hyprland
@@ -87,4 +89,44 @@ This is an alias of nv
 This sets up starship
 *** fish_plugins
 I only have one plugin, z.
+** starship.toml
+This is my starship configuration, it is a slightly modified version of the Catppuccin Powerline Preset, with colorscheme of Catppuccin Mocha. I don't remember what specific changes I made.
+** profile.knsv
+This is my konsave, load it with the =konsave=.
+** waybar
+This is a modified version of [[https://github.com/soaddevgit/WaybarTheme][soaddevgit's theme]]. I removed the workspaces and the applications open. In addition, I changed the colors to Catppuccin Theme. I removed some Glyphs that didn't properly render. I also made the objects much more pilled.
+** neovim
+This is by far the most complicated part of the entire configuration.
+*** General
+My neovim config currently uses =SPC= as the leader key. I also use =\= as local leader, but I don't use local leader. My package manager is lazy.nvim.
+*** Directory Structure
+Within the main folder, there exists =spell=, this is for the dictionary. Ignore it. Additionally there exists =init.lua=. This file loads everything. There is also =lazy-lock.json=, this file exists for lazy.nvim and is auto-generated. The config folder handles general configuration. The keymaps folder handles keymaps. The plugins folder handles plugins.
+*** config
+**** autocmds.lua
+This handles auto commands. There is only one auto command.
+***** Writing Autocommand
+This runs if the file is a .org, .md or .tex file. It adds spellcheck and word wrapping.
+**** lazy.lua
+This handles lazy.nvim, see [[https://lazy.folke.io/installation][the documentation]].
+**** options.lua
+This file is extremely powerful, it handles all of the misc configuration.
+- Relative Line Numbers
+- Tabs into spaces (size 2)
+- 24-bit colors
+- Signed column for gitsigns and other stuff
+- Cursor Line
+- No wrapping
+- Mouse support
+- Clipboard (with SSH support)
+- Right vertical splits
+- Bottom horizontal splits
+**** lsp.lua
+This handles LSP, more precisely it allows the LSP to know about the =vim= variable, making Lua significantly more usable.
+**** lang.lua
+This defines every single language I use and corresponding formatters, and Mason servers and other stuff.
+*** keymaps
+**** init.lua
+This simply imports core.lua
+**** core.lua
+
 
