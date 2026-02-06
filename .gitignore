@@ -6,3 +6,4 @@ emacs/url
 emacs/bookmarks
 emacs/session*
 emacs/custom.el
+emacs/straight
