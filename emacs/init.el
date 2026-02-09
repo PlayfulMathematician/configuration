@@ -16,20 +16,25 @@
   (load bootstrap-file nil 'nomessage))
 ;;;* package installation
 (use-package catppuccin-theme :ensure t :demand t  :straight t)
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-undo-system 'undo-redo)
-  :config
-  (evil-mode 1)  :straight t)
+(use-package elcord :ensure t :demand t :straight t)
+;; (use-package evil
+;;  :ensure t
+;;  :init
+;;  (setq evil-want-integration t)
+;;  (setq evil-want-keybinding nil)
+;;  (setq evil-undo-system 'undo-redo)
+;;  :config
+;;   (evil-mode 1)  :straight t)
 (use-package org-bullets :straight t)
 ;;;* require
 (with-eval-after-load 'org
   (require 'org-agenda))
 (require 'org-crypt)
 (require 'ox-md)
+(require 'elcord)
+
+;;;* elcord
+(elcord-mode)
 
 ;;;* custom functions
 (defun my/open-index-org ()
@@ -115,3 +120,5 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 (setq org-startup-with-inline-images t) 
+;;;* misc
+(setq-default cursor-type 'bar)
