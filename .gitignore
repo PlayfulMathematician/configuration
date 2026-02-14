@@ -9,3 +9,5 @@ emacs/custom.el
 emacs/straight
 emacs/games
 emacs/elpa
+emacs/tree-sitter
+emacs/tutorial

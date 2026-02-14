@@ -13,20 +13,57 @@
 :ensure t
 :demand t
 :straight t)
-(use-package elcord
-:ensure t
-:demand t
-:straight t)
+
 (use-package org-bullets
-:straight t)
+  :straight t)
+(use-package eglot :straight t
+  :hook ((c-ts-mode . eglot-ensure)
+         (c++-ts-mode . eglot-ensure)
+         (python-ts-mode . eglot-ensure)
+         (rust-ts-mode . eglot-ensure)))
+(setq treesit-language-source-alist
+      '((c "https://github.com/tree-sitter/tree-sitter-c")
+        (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+        (python "https://github.com/tree-sitter/tree-sitter-python")
+        (rust "https://github.com/tree-sitter/tree-sitter-rust")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript")))
+(use-package treesit-auto
+  :straight t
+  :custom
+  (treesit-auto-install t)
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  :config
+  (global-treesit-auto-mode))
+(use-package corfu
+  :init
+  (global-corfu-mode)
+  :custom
+  (corfu-auto t)             
+  (corfu-auto-prefix 1)      
+  (corfu-auto-delay 0.01)      
+  (corfu-cycle t)
+  (corfu-preselect 'prompt)
+  :straight t)
+
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file) :straight t)
+
 ;;;* require
 (with-eval-after-load 'org (require 'org-agenda))
 (require 'org-crypt)
 (require 'ox-md)
-(require 'elcord)
+
+
 
 ;;;* elcord
 (elcord-mode)
+;;;* treesitter
+(setq major-mode-remap-alist
+      '((c-mode . c-ts-mode)
+        (c++-mode . c++-ts-mode)
+        (python-mode . python-ts-mode)
+        (rust-mode . rust-ts-mode)))
 
 ;;;* custom functions
 (defun my/open-index-org ()

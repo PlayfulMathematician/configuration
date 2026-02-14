@@ -10,7 +10,6 @@ map("n", "<leader>bp", ":bprevious<CR>", opts)
 -- doesn't work
 -- i don't know how to use macros
 map("n", "q", "<nop>")
-map({ "n", "v" }, "d", '"_d', { noremap = true })
 -- doesn't work
 
 map("n", "<S-h>", ":bprevious<CR>", opts)
