@@ -69,11 +69,11 @@ truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"Documents" = "󰈙 "
+"stuff_bin/documents" = "󰈙 "
 "Downloads" = " "
 "Music" = "󰝚 "
 "Pictures" = " "
-"Developer" = "󰲋 "
+"stuff_bin/projects" = "󰲋 "
 
 [git_branch]
 symbol = ""

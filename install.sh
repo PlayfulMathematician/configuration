@@ -26,7 +26,7 @@ link() {
   local src="$1"
   local dest="$2"
   move_if_exists "$dest"
-  ln -s "$src" "$dest"
+  ln -sf "$src" "$dest"
 }
 
 link "$REPO/fish" "$CONFIG/fish"
@@ -38,3 +38,5 @@ link "$REPO/starship.toml" "$CONFIG/starship.toml"
 link "$REPO/emacs" "$HOME/.emacs.d"
 link "$REPO/wezterm" "$CONFIG/wezterm"
 link "$REPO/sway" "$CONFIG/sway"
+link "$REPO/bash/.bashrc" "$HOME/.bashrc"
+link "$REPO/bash/.bash_profile" "$HOME/.bash_profile"

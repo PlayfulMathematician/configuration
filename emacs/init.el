@@ -54,10 +54,6 @@
 (require 'org-crypt)
 (require 'ox-md)
 
-
-
-;;;* elcord
-(elcord-mode)
 ;;;* treesitter
 (setq major-mode-remap-alist
       '((c-mode . c-ts-mode)
