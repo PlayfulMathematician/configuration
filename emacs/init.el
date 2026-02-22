@@ -1,4 +1,4 @@
-;;;;* init.el
+;;;;* emacs/init.el
 ;;;* straight-el
 (defvar bootstrap-version)
 (let ((bootstrap-file (expand-file-name "straight/repos/straight.el/bootstrap.el" (or (bound-and-true-p straight-base-dir) user-emacs-directory)))
@@ -9,6 +9,9 @@
 (eval-print-last-sexp)))
 (load bootstrap-file nil 'nomessage))
 ;;;* package installation
+(require 'ox-latex)
+(require 'ox-beamer)
+
 (use-package catppuccin-theme
 :ensure t
 :demand t
@@ -21,19 +24,16 @@
          (c++-ts-mode . eglot-ensure)
          (python-ts-mode . eglot-ensure)
          (rust-ts-mode . eglot-ensure)))
+(ido-mode 1)
+(ido-everywhere 1)
+
 (setq treesit-language-source-alist
       '((c "https://github.com/tree-sitter/tree-sitter-c")
         (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
         (python "https://github.com/tree-sitter/tree-sitter-python")
         (rust "https://github.com/tree-sitter/tree-sitter-rust")
         (javascript "https://github.com/tree-sitter/tree-sitter-javascript")))
-(use-package treesit-auto
-  :straight t
-  :custom
-  (treesit-auto-install t)
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  :config
-  (global-treesit-auto-mode))
+
 (use-package corfu
   :init
   (global-corfu-mode)
@@ -42,8 +42,7 @@
   (corfu-auto-prefix 1)      
   (corfu-auto-delay 0.01)      
   (corfu-cycle t)
-  (corfu-preselect 'prompt)
-  :straight t)
+  (corfu-preselect 'prompt)  :straight t)
 
 (use-package cape
   :init
@@ -51,8 +50,14 @@
 
 ;;;* require
 (with-eval-after-load 'org (require 'org-agenda))
+(with-eval-after-load 'org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python     . t))))
 (require 'org-crypt)
 (require 'ox-md)
+(require 'ox-man)
 
 ;;;* treesitter
 (setq major-mode-remap-alist
@@ -105,7 +110,7 @@
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
 (setq display-line-numbers-type 'relative)
-
+(setq-default display-line-numbers-width 4)
 ;;;* word wrap and fonts
 (setq word-wrap t)
 (setq-default truncate-lines nil)

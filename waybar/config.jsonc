@@ -1,3 +1,4 @@
+// sway/config.jsonc
 {
   "layer": "top",
   "position": "top",
@@ -14,10 +15,20 @@
     "memory",
     "disk",
     "temperature",
-    "battery"
+    "battery",
+  "backlight/slider"
+
   ],
+
   "modules-center": [
   ],
+           "backlight/slider": {
+               "min": 0,
+               "max": 100,
+               "orientation": "horizontal",
+               "device": "intel_backlight"
+           },
+
   "modules-right": [
     "idle_inhibitor",
     "pulseaudio/slider",
@@ -52,7 +63,8 @@
     "tooltip-format": "Disk free: {free} / {total} ({percentage_free}%)"
   },
   "temperature": {
-    "format": "{temperatureC}°C {icon}",
+    "format": "{temperatureF}°F {icon}",
+    "tooltip": false,
     "format-icons": [
       ""
     ]

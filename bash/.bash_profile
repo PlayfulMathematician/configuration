@@ -1,4 +1,4 @@
-# ~/.bash_profile
+# bash/.bash_profile
 
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc

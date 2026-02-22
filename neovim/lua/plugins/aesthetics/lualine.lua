@@ -1,3 +1,4 @@
+-- neovim/lua/plugins/aesthetics/lualine.lua
 local function word_count()
 	local ft = vim.bo.filetype
 	if ft ~= "tex" and ft ~= "org" and ft ~= "markdown" then

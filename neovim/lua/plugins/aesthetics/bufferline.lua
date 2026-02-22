@@ -1,3 +1,4 @@
+-- neovim/lua/plugins/aesthetics/bufferline.lua
 return {
 	{
 		"akinsho/bufferline.nvim",

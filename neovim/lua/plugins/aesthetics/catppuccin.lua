@@ -1,3 +1,4 @@
+-- neovim/lua/plugins/aesthetics/catppuccin.lua
 return {
 	{
 		"catppuccin/nvim",
