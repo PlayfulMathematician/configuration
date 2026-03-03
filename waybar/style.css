@@ -1,6 +1,7 @@
+/* sway/style.css */
 * {
   border: none;
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "Iosevka Nerd Font";
   font-size: 15px;
   min-height: 0;
 }
@@ -26,7 +27,8 @@ window#waybar.hidden {
 #pulseaudio-slider,
 #network,
 #language,
-#battery {
+#battery,
+#backlight-slider {
   color: #1e1e2e;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -97,7 +99,10 @@ window#waybar.hidden {
   background: transparent;
   padding: 6px 12px;
   margin: 0 4px;
-  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 #workspaces button.occupied {
@@ -152,6 +157,12 @@ window#waybar.hidden {
 #pulseaudio-slider {
   color: #1e1e2e;
   background: #f38ba8;
+  min-width: 70px;
+}
+
+#backlight-slider {
+  color: #1e1e2e;
+  background: #89b4fa;
   min-width: 70px;
 }
 

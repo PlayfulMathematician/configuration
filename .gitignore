@@ -11,3 +11,7 @@ emacs/games
 emacs/elpa
 emacs/tree-sitter
 emacs/tutorial
+neovim/spell
+emacs/ido.last
+emacs/timelog
+main

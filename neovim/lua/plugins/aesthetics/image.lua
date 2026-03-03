@@ -1,3 +1,4 @@
+-- neovim/lua/plugins/aesthetics/image.lua
 if vim.g.neovide then
 	return {}
 end
