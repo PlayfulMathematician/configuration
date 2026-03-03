@@ -7,33 +7,23 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "modules-left": [
-    "custom/archicon",
+  "modules-left": ["custom/archicon", "clock", "cpu", "memory", "disk"],
 
-    "clock",
-    "cpu",
-    "memory",
-    "disk",
-    "temperature",
-    "battery",
-  "backlight/slider"
-
-  ],
-
-  "modules-center": [
-  ],
-           "backlight/slider": {
-               "min": 0,
-               "max": 100,
-               "orientation": "horizontal",
-               "device": "intel_backlight"
-           },
+  "modules-center": ["sway/window"],
+  "backlight/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal",
+    "device": "intel_backlight"
+  },
 
   "modules-right": [
-    "idle_inhibitor",
-    "pulseaudio/slider",
-    "pulseaudio",
-    "network"
+    "temperature",
+    "battery",
+    "backlight/slider",
+
+    "network",
+    "pulseaudio/slider"
   ],
   "custom/archicon": {
     "format": "󰣇",
@@ -65,9 +55,7 @@
   "temperature": {
     "format": "{temperatureF}°F {icon}",
     "tooltip": false,
-    "format-icons": [
-      ""
-    ]
+    "format-icons": [""]
   },
   "wlr/taskbar": {
     "format": "{icon}",
@@ -76,9 +64,7 @@
     "tooltip-format": "{name}",
     "on-click": "activate",
     "on-click-middle": "close",
-    "ignore-list": [
-      "rofi"
-    ]
+    "ignore-list": ["rofi"]
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -97,10 +83,7 @@
     "format": "{volume}% {icon}",
     "format-muted": "{format_source}",
     "format-icons": {
-      "default": [
-        "",
-        ""
-      ]
+      "default": ["", ""]
     }
   },
   "network": {

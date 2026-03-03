@@ -11,7 +11,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-
+export PATH="/var/lib/snapd/snap/bin:$PATH"
+export PATH="$HOME/CEdev/bin:$PATH"
 unset PERL5LIB PERL_MB_OPT PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 
 export VCPKG_ROOT="$HOME/.local/share/vcpkg"
