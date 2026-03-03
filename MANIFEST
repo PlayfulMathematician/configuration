@@ -1,15 +1,47 @@
-fish ($REPO/fish $CONFIG/fish)
-hyprland ($REPO/hyprland $CONFIG/hypr)
-kitty ($REPO/kitty $CONFIG/kitty)
-neovim ($REPO/neovim $CONFIG/nvim)
-waybar ($REPO/waybar $CONFIG/waybar)
-starship ($REPO/starship/starship.toml $CONFIG/starship.toml)
-emacs ($REPO/emacs $HOME/.emacs.d)
-wezterm ($REPO/wezterm $CONFIG/wezterm)
-sway ($REPO/sway $CONFIG/sway)
-bash
- ($REPO/bash/.bashrc $HOME/.bashrc)
- ($REPO/bash/.bash_profile $HOME/.bash_profile)
 
-ly ($REPO/ly /etc/ly/config.ini)
+neovim (
+       $REPO/neovim
+       $CONFIG/nvim
+)
+
+waybar (
+       $REPO/waybar
+       $CONFIG/waybar
+)
+
+wezterm (
+       $REPO/wezterm
+       $CONFIG/wezterm
+)
+
+starship (
+	 $REPO/starship/starship.toml
+	 $CONFIG/starship.toml
+)
+
+emacs (
+      $REPO/emacs
+      $HOME/.emacs.d
+)
+
+wezterm (
+	$REPO/wezterm
+	$CONFIG/wezterm
+)
+sway (
+     $REPO/sway
+     $CONFIG/sway
+)
+bash (
+	$REPO/bash/.bashrc
+	$HOME/.bashrc
+	
+	$REPO/bash/.bash_profile
+	$HOME/.bash_profile
+)
+
+ly (
+   $REPO/ly
+   /etc/ly/config.ini
+)
 
