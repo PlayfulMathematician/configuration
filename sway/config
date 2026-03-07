@@ -21,7 +21,8 @@ set $menu wofi --show drun
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/otis/stuff_bin/media/images/background/celeste.png fill
+output * bg /home/otis/stuff_bin/media/images/background/skyred.jpg fill
+
 #
 # Example configuration:
 #

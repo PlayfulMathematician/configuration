@@ -24,10 +24,6 @@ emacs (
       $HOME/.emacs.d
 )
 
-wezterm (
-	$REPO/wezterm
-	$CONFIG/wezterm
-)
 sway (
      $REPO/sway
      $CONFIG/sway

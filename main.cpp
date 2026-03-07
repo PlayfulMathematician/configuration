@@ -22,31 +22,9 @@ typedef struct {
   TokenType tt;
   std::string contents;
   int level;
-} Token;  
-
-typedef std::vector<AppEntry> Manifestation;
-int main(int argc, char **argv) {
-
-  std::filesystem::path repo_dir = std::getenv("HOME");
-  repo_dir /= ".local/state/playfulconfig/";
-  if (!std::filesystem::exists(repo_dir)) {
-    std::cout << "Cloning Repository" << std::endl;
-    std::system(
-        std::format("git clone {} {}",
-                    "https://github.com/playfulmathematician/configuration.git",
-                    repo_dir.c_str())
-            .c_str());
-  } else {
-    std::cout << "Pulling Repo Updates" << std::endl;
-    std::system(std::format("git -C  {} pull", repo_dir.c_str()).c_str());
-  }
-
-  std::filesystem::path manifest_file = repo_dir;
-  manifest_file /= "MANIFEST";
-
-
-  std::ifstream f(manifest_file.c_str());
-  char ch;
+} Token;
+std::vector<Token> generate_tokens(std::ifstream &f) {
+   char ch;
   std::string current;
   std::vector<Token> tokens;
   Token t;
@@ -84,24 +62,49 @@ int main(int argc, char **argv) {
         }
         current += ch;
   }
+  return tokens;
+}
+typedef std::vector<AppEntry> Manifestation;
+
+int main(int argc, char **argv) {
+
+  std::filesystem::path repo_dir = std::getenv("HOME");
+  repo_dir /= ".local/state/playfulconfig/";
+  if (!std::filesystem::exists(repo_dir)) {
+    std::cout << "Cloning Repository" << std::endl;
+    std::system(
+        std::format("git clone {} {}",
+                    "https://github.com/playfulmathematician/configuration.git",
+                    repo_dir.c_str())
+            .c_str());
+  } else {
+    std::cout << "Pulling Repo Updates" << std::endl;
+    std::system(std::format("git -C  {} pull", repo_dir.c_str()).c_str());
+  }
+
+  std::filesystem::path manifest_file = repo_dir;
+  manifest_file /= "MANIFEST";
+
+
+  std::ifstream f(manifest_file.c_str());
+  std::vector<Token> tokens = generate_tokens(f);
   for (Token tok : tokens) {
     std::cout << std::string(tok.level, '\t');
     switch (tok.tt) {
       
     case LPAR:
-      std::cout << "(" << std::endl;
+      std::cout << "TOK \"(\"" << std::endl;
       break;
     case RPAR:
-      std::cout << ")" << std::endl;
+      std::cout << "TOK \")\"" << std::endl;
       break;
     case WORD:
-      std::cout << tok.contents << std::endl;
+      std::cout << "TOK \"" << tok.contents << "\"" << std::endl;
       break;
     }
-      
   }
+  // do parsing 
   
 
-  }
+}
 
- 
