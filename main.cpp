@@ -1,5 +1,4 @@
 
-#include <climits>
 #include <cstdlib>
 #include <filesystem>
 #include <format>
@@ -9,7 +8,7 @@
 #include <vector>
 typedef struct {
   std::string name;
-  std::vector<std::pair<std::string, std::string>> entries;
+  std::vector<std::string> entries;
 } AppEntry;
 
 typedef enum {
@@ -23,6 +22,7 @@ typedef struct {
   std::string contents;
   int level;
 } Token;
+
 std::vector<Token> generate_tokens(std::ifstream &f) {
    char ch;
   std::string current;
@@ -64,6 +64,32 @@ std::vector<Token> generate_tokens(std::ifstream &f) {
   }
   return tokens;
 }
+
+
+void print_token(Token tok) {
+  std::cout << std::string(tok.level, '\t');
+    switch (tok.tt) {
+      
+    case LPAR:
+      std::cout << "TOK \"(\"" << std::endl;
+      break;
+    case RPAR:
+      std::cout << "TOK \")\"" << std::endl;
+      break;
+    case WORD:
+      std::cout << "TOK \"" << tok.contents << "\"" << std::endl;
+      break;
+    }
+}
+
+void print_tokens(const std::vector<Token> &tokens) {
+  for (Token tok : tokens) {
+    print_token(tok);
+    
+  }
+}
+
+
 typedef std::vector<AppEntry> Manifestation;
 
 int main(int argc, char **argv) {
@@ -79,7 +105,7 @@ int main(int argc, char **argv) {
             .c_str());
   } else {
     std::cout << "Pulling Repo Updates" << std::endl;
-    std::system(std::format("git -C  {} pull", repo_dir.c_str()).c_str());
+    std::system(std::format("git -C {} pull", repo_dir.c_str()).c_str());
   }
 
   std::filesystem::path manifest_file = repo_dir;
@@ -88,23 +114,7 @@ int main(int argc, char **argv) {
 
   std::ifstream f(manifest_file.c_str());
   std::vector<Token> tokens = generate_tokens(f);
-  for (Token tok : tokens) {
-    std::cout << std::string(tok.level, '\t');
-    switch (tok.tt) {
-      
-    case LPAR:
-      std::cout << "TOK \"(\"" << std::endl;
-      break;
-    case RPAR:
-      std::cout << "TOK \")\"" << std::endl;
-      break;
-    case WORD:
-      std::cout << "TOK \"" << tok.contents << "\"" << std::endl;
-      break;
-    }
-  }
-  // do parsing 
-  
+  print_tokens(tokens);
 
 }
 

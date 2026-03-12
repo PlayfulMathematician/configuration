@@ -1,43 +1,55 @@
 ;;;;* emacs/init.el
 ;;;* straight-el
 (defvar bootstrap-version)
-(let ((bootstrap-file (expand-file-name "straight/repos/straight.el/bootstrap.el" (or (bound-and-true-p straight-base-dir) user-emacs-directory)))
-(bootstrap-version 7))
-(unless (file-exists-p bootstrap-file)
-(with-current-buffer (url-retrieve-synchronously "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el" 'silent 'inhibit-cookies)
-(goto-char (point-max))
-(eval-print-last-sexp)))
-(load bootstrap-file nil 'nomessage))
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el"
+			 (or
+			  (bound-and-true-p straight-base-dir)
+			  user-emacs-directory)))
+      (bootstrap-version 7))
+     (unless (file-exists-p bootstrap-file)
+       (with-current-buffer
+	   (url-retrieve-synchronously
+	     "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+	     'silent
+	     'inhibit-cookies)
+           (goto-char (point-max))
+           (eval-print-last-sexp)))
+     (load bootstrap-file nil 'nomessage))
 
 ;;;* package installation
 
 (use-package catppuccin-theme
-:ensure t
-:demand t
-:straight t)
+             :ensure t
+             :demand t
+             :straight t)
 
 (use-package org-bullets
-  :straight t)
+             :straight t)
 ;(use-package emacs-format-all-the-code :straight t)
-(use-package eglot :straight t
-  :hook ((c-ts-mode . eglot-ensure)
-         (c++-ts-mode . eglot-ensure)
-         (python-ts-mode . eglot-ensure)
-         (rust-ts-mode . eglot-ensure)))
+(use-package eglot
+             :straight t
+             :hook
+	     ((c-ts-mode . eglot-ensure)
+              (c++-ts-mode . eglot-ensure)
+              (python-ts-mode . eglot-ensure)
+              (rust-ts-mode . eglot-ensure)))
 
 (use-package corfu
-  :init
-  (global-corfu-mode)
-  :custom
-  (corfu-auto t)             
-  (corfu-auto-prefix 1)      
-  (corfu-auto-delay 0.01)      
-  (corfu-cycle t)
-  (corfu-preselect 'prompt)  :straight t)
+             :init
+             (global-corfu-mode)
+             :custom
+             (corfu-auto t)             
+             (corfu-auto-prefix 1)      
+             (corfu-auto-delay 0.01)      
+             (corfu-cycle t)
+             (corfu-preselect 'prompt)
+	     :straight t)
 
 (use-package cape
   :init
-  (add-to-list 'completion-at-point-functions #'cape-file) :straight t)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  :straight t)
 ;;;* treesitter
 
 (setq major-mode-remap-alist
@@ -52,10 +64,9 @@
         (python "https://github.com/tree-sitter/tree-sitter-python")
         (rust "https://github.com/tree-sitter/tree-sitter-rust")
         ))
-
-(unless (file-exists-p "/home/otis/.emacs.d/tree-sitter/libtree-sitter-c.so") (treesit-install-language-grammar 'c)
+(unless (file-exists-p (expand-file-name  "tree-sitter/libtree-sitter-c.so" user-emacs-directory) ) (treesit-install-language-grammar 'c)
 	)
-(unless (file-exists-p "/home/otis/.emacs.d/tree-sitter/libtree-sitter-cpp.so") (treesit-install-language-grammar 'cpp)
+(unless (file-exists-p  (expand-file-name  "tree-sitter/libtree-sitter-cpp.so" user-emacs-directory)) (treesit-install-language-grammar 'cpp)
 )
 ;;;* ido-mode
 (ido-mode 1)
