@@ -24,6 +24,14 @@ nv() {
   nvim "$@"
 }
 
+assasinate-emacs() {
+  pkill emacs
+}
+
+assasinate-vesktop() {
+  pkill vesktop
+}
+
 eval "$(starship init bash)"
 
 eval "$(zoxide init bash)"

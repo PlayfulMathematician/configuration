@@ -26,7 +26,7 @@
 
 (use-package org-bullets
              :straight t)
-;(use-package emacs-format-all-the-code :straight t)
+
 (use-package eglot
              :straight t
              :hook
@@ -34,6 +34,7 @@
               (c++-ts-mode . eglot-ensure)
               (python-ts-mode . eglot-ensure)
               (rust-ts-mode . eglot-ensure)))
+
 
 (use-package corfu
              :init
