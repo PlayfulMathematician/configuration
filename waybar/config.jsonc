@@ -9,7 +9,7 @@
   "gtk-layer-shell": true,
   "modules-left": ["custom/archicon", "clock", "cpu", "memory", "disk"],
 
-  "modules-center": ["sway/window"],
+  "modules-center": [],
   "backlight/slider": {
     "min": 0,
     "max": 100,

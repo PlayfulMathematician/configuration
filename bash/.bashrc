@@ -25,11 +25,11 @@ nv() {
 }
 
 assasinate-emacs() {
-  pkill emacs
+  pkill -9 emacs
 }
 
 assasinate-vesktop() {
-  pkill vesktop
+  pkill -9 vesktop
 }
 
 eval "$(starship init bash)"

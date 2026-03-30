@@ -18,7 +18,7 @@ M.settings = {
 				library = {
 					vim.env.VIMRUNTIME,
 					vim.fn.stdpath("data") .. "/lazy",
-					"/home/otis/.local/share/wezterm-types",
+					vim.fn.expand("~/.local/share/wezterm-types/"),
 				},
 			},
 		},

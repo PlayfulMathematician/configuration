@@ -21,3 +21,5 @@ export EDITOR=nvim
 if [ -f "$HOME/.elan/env" ]; then
   . "$HOME/.elan/env"
 fi
+
+export PATH="$HOME/.elan/bin:$PATH"

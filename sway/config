@@ -20,9 +20,13 @@ set $term wezterm
 set $menu wofi --show drun
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/otis/stuff_bin/media/images/background/skyred.jpg fill
+# This is this image: https://commons.wikimedia.org/wiki/File:Alaska_Airlines_Boeing_737-890_N579AS.jpg
+output * bg ~/stuff_bin/media/images/background/mandel.png fill
+# Notification Daemon
+exec swaync
 
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
 #
 # Example configuration:
 #

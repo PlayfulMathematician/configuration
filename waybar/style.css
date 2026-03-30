@@ -1,15 +1,17 @@
 /* sway/style.css */
+@import "mocha.css";
 * {
   border: none;
   font-family: "Iosevka Nerd Font";
   font-size: 15px;
   min-height: 0;
+  color: @text;
 }
 
 window#waybar {
   background: transparent;
-  color: #cdd6f4;
   transition: none;
+  color: black;
 }
 
 window#waybar.hidden {
@@ -58,127 +60,48 @@ window#waybar.hidden {
 
 #custom-archicon {
   font-size: 20px;
-  color: #89b4fa;
+  color: @blue;
   background: #1e1e2e;
   padding: 0 18px;
 }
 
 #clock {
-  background: #a6e3a1;
+  background: @green;
 }
 
 #cpu {
-  background: #89b4fa;
+  background: @blue;
 }
 
 #memory {
-  background: #cba6f7;
+  background: @mauve;
 }
 
 #disk {
-  background: #f5c2e7;
+  background: @pink;
 }
 
 #temperature {
-  background: #fab387;
+  background: @yellow;
 }
 
 #battery {
-  background: #f38ba8;
-}
-
-#workspaces {
-  background: transparent;
-  border-radius: 12px;
-  margin: 8px 8px;
-  padding: 0 8px;
-}
-
-#workspaces button {
-  color: #b4befe;
-  background: transparent;
-  padding: 6px 12px;
-  margin: 0 4px;
-  transition:
-    color 0.3s ease,
-    text-shadow 0.3s ease,
-    transform 0.3s ease;
-}
-
-#workspaces button.occupied {
-  color: #a6e3a1;
-}
-
-#workspaces button.active {
-  color: #89b4fa;
-  background: rgba(137, 180, 250, 0.25);
-  text-shadow: 0 0 6px #89b4fa;
-  border-radius: 10px;
-}
-
-#workspaces button:hover {
-  color: #89b4fa;
-  background: rgba(137, 180, 250, 0.15);
-}
-
-#taskbar {
-  background: transparent;
-  border-radius: 12px;
-  padding: 0 8px;
-  margin: 8px 8px;
-}
-
-#taskbar button {
-  padding: 6px 12px;
-  margin: 0 6px;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-#taskbar button.active {
-  background: rgba(203, 166, 247, 0.3);
-}
-
-#taskbar button:hover {
-  background: rgba(203, 166, 247, 0.2);
-}
-
-#idle_inhibitor {
-  background: #a6e3a1;
-  padding-right: 20px;
-}
-
-#pulseaudio {
-  min-width: 70px;
-  color: #1e1e2e;
-  background: #f5e0dc;
+  background: @red;
 }
 
 #pulseaudio-slider {
   color: #1e1e2e;
-  background: #f38ba8;
+  background: @green;
   min-width: 70px;
 }
 
 #backlight-slider {
   color: #1e1e2e;
-  background: #89b4fa;
+  background: @teal;
   min-width: 70px;
 }
 
 #network {
-  background: #cba6f7;
+  background: @mauve;
   padding-right: 18px;
-}
-
-#language {
-  background: #a6e3a1;
-  padding-right: 20px;
-}
-
-@keyframes blink {
-  to {
-    background-color: #f38ba8;
-    color: #cdd6f4;
-  }
 }

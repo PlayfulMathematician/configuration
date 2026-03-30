@@ -26,14 +26,27 @@
 
 (use-package org-bullets
              :straight t)
+(use-package nerd-icons
+  :straight t
+  :custom
+  (nerd-icons-font-family "Iosevka Nerd Font")
 
+  :config
+
+  )
+(use-package neotree
+  :straight t
+  ;; ... other settings you might have
+  )
+(setq neo-theme 'nerd-icons)   ; or 'nerd if you prefer arrow-style with nerd look
 (use-package eglot
              :straight t
              :hook
 	     ((c-ts-mode . eglot-ensure)
               (c++-ts-mode . eglot-ensure)
               (python-ts-mode . eglot-ensure)
-              (rust-ts-mode . eglot-ensure)))
+              (rust-ts-mode . eglot-ensure)
+	      (lua-ts-mode . eglot-ensure)))
 
 
 (use-package corfu
@@ -64,8 +77,12 @@
         (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
         (python "https://github.com/tree-sitter/tree-sitter-python")
         (rust "https://github.com/tree-sitter/tree-sitter-rust")
-        ))
+	(lua "https://github.com/MunifTanjim/tree-sitter-lua")
+	))
+
 (unless (file-exists-p (expand-file-name  "tree-sitter/libtree-sitter-c.so" user-emacs-directory) ) (treesit-install-language-grammar 'c)
+	)
+(unless (file-exists-p (expand-file-name  "tree-sitter/libtree-sitter-lua.so" user-emacs-directory) ) (treesit-install-language-grammar 'lua)
 	)
 (unless (file-exists-p  (expand-file-name  "tree-sitter/libtree-sitter-cpp.so" user-emacs-directory)) (treesit-install-language-grammar 'cpp)
 )
