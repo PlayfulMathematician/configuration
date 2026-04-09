@@ -122,6 +122,13 @@ M.lang = {
 		},
 		ts = { "html" },
 	},
+	java = {
+		lsp = "jdtls",
+		fmt = {
+			{ name = "google-java-format", mason = true },
+		},
+		ts = { "java" },
+	},
 }
 
 -- helpers -------------------------------------------------

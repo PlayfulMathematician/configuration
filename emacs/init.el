@@ -30,15 +30,17 @@
   :straight t
   :custom
   (nerd-icons-font-family "Iosevka Nerd Font")
-
   :config
-
   )
 (use-package neotree
   :straight t
-  ;; ... other settings you might have
   )
-(setq neo-theme 'nerd-icons)   ; or 'nerd if you prefer arrow-style with nerd look
+
+(use-package elcord :straight t)
+(require 'elcord)
+(elcord-mode)
+
+(setq neo-theme 'nerd-icons)  
 (use-package eglot
              :straight t
              :hook
@@ -48,7 +50,20 @@
               (rust-ts-mode . eglot-ensure)
 	      (lua-ts-mode . eglot-ensure)))
 
+;;;* treesitter folding (best option with your setup)
+(use-package treesit-fold
+  :straight (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")
+  :config
+  (global-treesit-fold-mode 1)
 
+  (global-treesit-fold-indicators-mode 1)
+
+  (setq treesit-fold-line-count-show t)
+
+  :bind
+  (("C-`"     . treesit-fold-toggle)        ; toggle fold at point
+   ("C-M-`"   . treesit-fold-close-all)     ; close everything
+   ("C-S-`"   . treesit-fold-open-all)))    ; open everything
 (use-package corfu
              :init
              (global-corfu-mode)
@@ -59,6 +74,9 @@
              (corfu-cycle t)
              (corfu-preselect 'prompt)
 	     :straight t)
+(use-package corfu-terminal :straight t)
+
+(use-package license :straight t)
 
 (use-package cape
   :init
@@ -96,6 +114,7 @@
    '((emacs-lisp . t)
      (python     . t)
      (C . t)
+     
 )))
 
 (require 'org-agenda)
@@ -147,16 +166,29 @@
 
 ;;;* line numbers
 (global-display-line-numbers-mode 1)
-(global-visual-line-mode t)
 (setq display-line-numbers-type 'relative)
 (setq-default display-line-numbers-width 4)
-;;;* word wrap and fonts
-(setq word-wrap t)
-(setq-default truncate-lines nil)
 
-(set-face-attribute 'default nil :family "Iosevka Nerd Font" :height 240)
+(setq-default truncate-lines t)       
+(setq-default word-wrap nil)
+(global-visual-line-mode -1)    
 
-(set-face-attribute 'fixed-pitch nil :family "Iosevka Nerd Font" :height 240)
+(add-hook 'text-mode-hook #'visual-line-mode)
+(add-hook 'org-mode-hook #'visual-line-mode)
+(add-hook 'markdown-mode-hook #'visual-line-mode)
+
+(add-hook 'prog-mode-hook
+          (lambda () (visual-line-mode -1)))
+
+(add-hook 'neotree-mode-hook
+          (lambda () (visual-line-mode -1)))
+(set-face-attribute 'default nil :family "Iosevka Nerd Font" :height 120)
+
+(set-face-attribute 'fixed-pitch nil :family "Iosevka Nerd Font" :height 1.0)
+(set-face-attribute 'variable-pitch nil
+                    :family "Iosevka Nerd Font"
+                    :height 1.0
+                    )
 ;;;* org hooks
 (add-hook 'org-mode-hook #'my/org-hook)
 
@@ -175,9 +207,6 @@
 ;;;* backup/autosave
 (setq auto-save-default nil)
 (setq make-backup-files nil)
-
-;;;* initial buffer
-(setq initial-buffer-choice (expand-file-name "~/stuff_bin/documents/org/index.org"))
 
 ;;;* org file
 (setq org-agenda-files '("~/stuff_bin/documents/org/index.org"))

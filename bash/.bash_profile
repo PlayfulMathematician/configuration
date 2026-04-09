@@ -23,3 +23,4 @@ if [ -f "$HOME/.elan/env" ]; then
 fi
 
 export PATH="$HOME/.elan/bin:$PATH"
+. "/home/otis/.local/share/bob/env/env.sh"

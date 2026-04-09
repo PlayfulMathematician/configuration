@@ -57,22 +57,6 @@
     "tooltip": false,
     "format-icons": [""]
   },
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "all-outputs": true,
-    "active-first": true,
-    "tooltip-format": "{name}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "ignore-list": ["rofi"]
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
-  },
   "pulseaudio/slider": {
     "format": "{volume}%",
     "format-muted": "MUTE",
